@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { turbineData } from "@/data/turbineData";
 import TurbineCard from "@/components/TurbineCard";
 import { Button } from "@/components/ui/button";
-import { Wind, LogOut, AlertTriangle } from "lucide-react";
+import { Wind, LogOut, AlertTriangle, Shield } from "lucide-react";
 import { toast } from "sonner";
 
 const Dashboard = () => {
@@ -63,10 +63,18 @@ const Dashboard = () => {
                 <p className="text-sm text-muted-foreground">Welcome, {user?.username}</p>
               </div>
             </div>
-            <Button variant="outline" onClick={handleLogout}>
-              <LogOut className="mr-2 h-4 w-4" />
-              Logout
-            </Button>
+            <div className="flex gap-2">
+              {user?.username === "admin" && (
+                <Button variant="outline" onClick={() => navigate("/admin")}>
+                  <Shield className="mr-2 h-4 w-4" />
+                  Admin Panel
+                </Button>
+              )}
+              <Button variant="outline" onClick={handleLogout}>
+                <LogOut className="mr-2 h-4 w-4" />
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
       </header>

@@ -98,6 +98,7 @@ const Login = () => {
             <p className="text-xs text-muted-foreground font-medium mb-2">Demo Credentials:</p>
             <p className="text-xs text-muted-foreground">Username: <span className="font-mono">arjun</span> | Password: <span className="font-mono">wind123</span></p>
             <p className="text-xs text-muted-foreground">Username: <span className="font-mono">megha</span> | Password: <span className="font-mono">turbine456</span></p>
+            <p className="text-xs text-muted-foreground">Admin: <span className="font-mono">admin</span> | Password: <span className="font-mono">admin123</span></p>
           </div>
         </CardContent>
       </Card>

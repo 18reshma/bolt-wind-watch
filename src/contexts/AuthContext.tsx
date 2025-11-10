@@ -27,6 +27,12 @@ const mockUsers = [
     username: "megha",
     password: "turbine456",
     turbines: ["WT-02"]
+  },
+  {
+    id: 3,
+    username: "admin",
+    password: "admin123",
+    turbines: ["WT-01", "WT-02", "WT-03"] // Admin has access to all turbines
   }
 ];
 

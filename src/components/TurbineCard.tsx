@@ -1,4 +1,5 @@
-import { AlertCircle, CheckCircle, Wind } from "lucide-react";
+import { AlertCircle, CheckCircle, Wind, TrendingUp } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TurbineData, getTurbineStatus } from "@/data/turbineData";
@@ -8,13 +9,17 @@ interface TurbineCardProps {
 }
 
 const TurbineCard = ({ turbine }: TurbineCardProps) => {
+  const navigate = useNavigate();
   const { status, color } = getTurbineStatus(turbine.Fault_Probability);
   const isAtRisk = turbine.Fault_Probability > 0.6;
 
   return (
-    <Card className={`transition-all duration-300 hover:shadow-elevated ${
-      isAtRisk ? 'border-destructive/50 bg-destructive/5' : 'border-success/50 bg-success/5'
-    }`}>
+    <Card 
+      className={`transition-all duration-300 hover:shadow-elevated cursor-pointer ${
+        isAtRisk ? 'border-destructive/50 bg-destructive/5' : 'border-success/50 bg-success/5'
+      }`}
+      onClick={() => navigate(`/turbine/${turbine.Turbine_ID}`)}
+    >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle className="text-xl font-bold flex items-center gap-2">
           <Wind className="h-5 w-5 text-primary" />
@@ -56,6 +61,12 @@ const TurbineCard = ({ turbine }: TurbineCardProps) => {
               </p>
             </div>
           )}
+          <div className="mt-3 pt-3 border-t border-border">
+            <p className="text-xs text-primary flex items-center justify-center gap-1 font-medium">
+              <TrendingUp className="h-3 w-3" />
+              Click to view detailed analytics
+            </p>
+          </div>
         </div>
       </CardContent>
     </Card>
